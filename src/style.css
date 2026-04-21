@@ -1,0 +1,142 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Teko:wght@400;600&display=swap');
+
+:root {
+  --bg-color: #0b0c10;
+  --panel-bg: rgba(26, 28, 35, 0.7);
+  --panel-border: rgba(255, 255, 255, 0.1);
+  --neon-green: #39ff14;
+  --neon-green-dim: rgba(57, 255, 20, 0.2);
+  --text-main: #ffffff;
+  --text-dim: #a0a0a0;
+  --glass-blur: blur(12px);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Outfit', sans-serif;
+  background-color: var(--bg-color);
+  background-image: radial-gradient(circle at top right, #112 0%, var(--bg-color) 60%),
+                    radial-gradient(circle at bottom left, var(--neon-green-dim) 0%, transparent 40%);
+  background-attachment: fixed;
+  color: var(--text-main);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+#app {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+h1, h2, h3 {
+  font-family: 'Teko', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+h1 {
+  font-size: 4rem;
+  text-align: center;
+  margin-bottom: 2rem;
+  background: linear-gradient(to right, #fff, #aaa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 15px var(--neon-green-dim));
+}
+
+h2 {
+  font-size: 2.2rem;
+  color: var(--neon-green);
+  margin-bottom: 1rem;
+}
+
+/* Glassmorphism Panels */
+.panel {
+  background: var(--panel-bg);
+  backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--panel-border);
+  border-radius: 16px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.panel:hover {
+  box-shadow: 0 8px 32px 0 rgba(57, 255, 20, 0.15);
+}
+
+/* Inputs & Buttons */
+input[type="text"], input[type="number"] {
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid var(--panel-border);
+  border-radius: 8px;
+  color: var(--text-main);
+  padding: 0.8rem 1rem;
+  font-family: 'Outfit', sans-serif;
+  font-size: 1rem;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+input[type="text"]:focus, input[type="number"]:focus {
+  border-color: var(--neon-green);
+  box-shadow: 0 0 10px var(--neon-green-dim);
+}
+
+button {
+  background: transparent;
+  color: var(--neon-green);
+  border: 2px solid var(--neon-green);
+  padding: 0.8rem 1.5rem;
+  font-family: 'Teko', sans-serif;
+  font-size: 1.4rem;
+  border-radius: 8px;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+}
+
+button.primary {
+  background: var(--neon-green);
+  color: var(--bg-color);
+  font-weight: 600;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px var(--neon-green-dim);
+}
+
+button.primary:hover {
+  background: transparent;
+  color: var(--neon-green);
+}
+
+button.danger {
+  border-color: #ff3333;
+  color: #ff3333;
+}
+button.danger:hover {
+  background: #ff3333;
+  color: white;
+  box-shadow: 0 5px 15px rgba(255,51,51,0.3);
+}
+
+/* App Layout Grid */
+.dashboard {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+@media (min-width: 900px) {
+  .dashboard {
+    grid-template-columns: 2fr 3fr;
+  }
+}
